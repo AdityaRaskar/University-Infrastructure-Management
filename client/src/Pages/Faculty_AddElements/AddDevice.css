@@ -1,0 +1,36 @@
+/* DeviceForm.css */
+
+
+.add-device-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight:500;
+  }
+
+  
+  
+
+ 
+ select {
+    width: calc(100% - 16px); /* Adjusted width to account for padding */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+ 
+  .error-message {
+    color: #ff0000;
+    margin-top: 5px;
+  }
+  
