@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2024 at 09:07 AM
+-- Generation Time: Apr 14, 2024 at 01:43 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -220,7 +220,6 @@ CREATE TABLE `bills` (
   `token_id` int(11) DEFAULT NULL,
   `device_type` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `bill_description` text NOT NULL,
   `total_bill` decimal(10,2) DEFAULT NULL,
   `device_id` int(11) DEFAULT NULL,
   `admin_approval` tinyint(1) DEFAULT 0,
@@ -232,14 +231,15 @@ CREATE TABLE `bills` (
 -- Dumping data for table `bills`
 --
 
-INSERT INTO `bills` (`bill_id`, `tech_id`, `token_id`, `device_type`, `description`, `bill_description`, `total_bill`, `device_id`, `admin_approval`, `acc_sec_approval`, `order_id`) VALUES
-(1, 110002, 4, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500, \'total\' : 1500', '', 3000.00, 7, 1, 0, ''),
-(3, 110001, 23, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', '', 1500.00, 2, 1, 1, 'order_Nw1XByHAg3l7DR'),
-(4, 110001, 25, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', '', 1500.00, 2, 1, 1, 'order_Nw1Ro2Cl4A1J8i'),
-(5, 110001, 26, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', '', 1500.00, 3, 1, 1, 'order_NwpoEiFYQtMunC'),
-(6, 110001, 27, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', '', 1500.00, 2, 0, 0, ''),
-(7, 110001, 28, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', '', 1500.00, 3, 1, 1, 'order_Nw1f2Gjm6goctP'),
-(8, 110001, 2, 'ac', 'a', 'Done', 1.00, 4, 1, 0, NULL);
+INSERT INTO `bills` (`bill_id`, `tech_id`, `token_id`, `device_type`, `description`, `total_bill`, `device_id`, `admin_approval`, `acc_sec_approval`, `order_id`) VALUES
+(1, 110002, 4, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500, \'total\' : 1500', 3000.00, 7, 1, 0, ''),
+(3, 110001, 23, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', 1500.00, 2, 1, 1, 'order_Nw1XByHAg3l7DR'),
+(4, 110001, 25, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', 1500.00, 2, 1, 1, 'order_Nw1Ro2Cl4A1J8i'),
+(5, 110001, 26, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', 1500.00, 3, 1, 1, 'order_NwpoEiFYQtMunC'),
+(6, 110001, 27, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', 1500.00, 2, 0, 0, ''),
+(7, 110001, 28, 'computer', ' \'keyboard\': 1000, \'mouse\' : 500', 1500.00, 3, 1, 1, 'order_Nw1f2Gjm6goctP'),
+(8, 110001, 2, 'ac', 'a', 1.00, 4, 1, 0, 'order_NxJq1O0I90gS3Z'),
+(26, 110002, 29, 'computer', 'texxxxxx', 1200.00, 5, 1, 1, 'order_NyUC3U9M7oyBvo');
 
 -- --------------------------------------------------------
 
@@ -364,12 +364,12 @@ CREATE TABLE `comp_complaints` (
 --
 
 INSERT INTO `comp_complaints` (`token_id`, `student_id`, `comp_id`, `description`, `complaint_date`, `tech_id`, `admin_approval`, `resolved_date`) VALUES
-(29, 112103002, 5, 'monitor not working', '2024-04-03', 110002, 1, NULL),
+(29, 112103002, 5, 'monitor not working', '2024-04-03', 110002, 1, '2024-04-14'),
 (30, 112103002, 7, 'monitor not working', '2024-04-03', 110002, 1, NULL),
 (31, 112103002, 8, 'monitor not working', '2024-04-03', 110002, 1, NULL),
-(32, 112103001, 57, 'keyboard not working', '2024-04-07', NULL, 0, NULL),
+(32, 112103001, 57, 'keyboard not working', '2024-04-07', NULL, 1, NULL),
 (33, 112103001, 72, 'Monitor not working', '2024-04-08', NULL, 0, NULL),
-(34, 112103001, 70, 'Issue in booting', '2024-04-08', NULL, 0, NULL);
+(34, 112103001, 70, 'Issue in booting', '2024-04-08', 110002, 1, '2024-04-14');
 
 -- --------------------------------------------------------
 
@@ -809,7 +809,7 @@ ALTER TABLE `ac_model`
 -- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
-  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `computer`

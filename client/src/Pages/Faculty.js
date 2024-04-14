@@ -68,7 +68,21 @@ export default function Faculty() {
     getAllUsers();
   }, []);
 
-  
+  // const getAllComplaintsAdmin = async () => {
+  //   try {
+  //     const response = await axios.get('http://localhost:4000/api/v1/getAllComplaintsAdmin',{user_type:sessionStorage.getItem('user_type'),device_type});
+  //     const { data } = response.data;
+  //     // console.log({ data });
+  //     setUnverifiedComplaints(data.filter(complaint => !complaint.admin_approval));
+  //     setnotAcceptedComplaints(data.filter(complaint => !complaint.tech_id && complaint.admin_approval === 1));
+  //     setAcceptedComplaints(data.filter(complaint => complaint.tech_id && !complaint.resolved_date && complaint.admin_approval === 1));
+  //     // console.log(acceptedComplaints);
+  //     setResolvedComplaints(data.filter(complaint => complaint.tech_id && complaint.resolved_date && complaint.admin_approval === 1));
+  //   } catch (error) {
+  //     console.error('Error fetching complaints:', error);
+  //   }
+  // };
+
   const getAllComplaintsAdmin = async (deviceType) => {
     try {
       const response = await axios.get(
@@ -81,7 +95,7 @@ export default function Faculty() {
         }
       );
       const { data } = response.data;
-      // console.log(data);
+      console.log(data);
       setUnverifiedComplaints(
         data.filter((complaint) => !complaint.admin_approval)
       );
@@ -114,7 +128,7 @@ export default function Faculty() {
 
   const getAllBillsAdmin = async () => {
     try {
-      // console.log( sessionStorage.getItem("user_type"));
+      console.log( sessionStorage.getItem("user_type"));
       const response = await axios.post(
         "http://localhost:4000/api/v1/getAllBillsAdmin",
         {
@@ -123,7 +137,8 @@ export default function Faculty() {
         }
       );
       const { data } = response.data;
-      // console.log(data);
+      console.log("hi...");
+      console.log(data);
       setUnverifiedBills(
         data.filter((bill) => !bill.admin_approval)
       );
@@ -146,7 +161,7 @@ export default function Faculty() {
 
   const handleDeviceTypeChange = (deviceType) => {
     setSelectedDeviceType(deviceType);
-    // console.log(deviceType);
+    console.log(deviceType);
     getAllComplaintsAdmin(deviceType); // Call getAllComplaintsAdmin with the selected device type
   };
 
@@ -1142,7 +1157,6 @@ export default function Faculty() {
                         <th>Token ID</th>
                         <th>Device Type</th>
                         <th>Device ID</th>
-                        <th>Description</th>
                         <th>Bill Description</th>
                         <th>Total Bill</th>
                         <th>Action</th>
@@ -1157,7 +1171,6 @@ export default function Faculty() {
                           <td>{bill.device_type}</td>
                           <td>{bill.device_id}</td>
                           <td>{bill.description}</td>
-                          <td>{bill.bill_description}</td>
                           <td>{bill.total_bill}</td>
                           <td className="text-center">
                             {/* <button onClick={() => handleApproveComplaint(complaint.token_id)} className="btn btn-success">Accept</button> */}
@@ -1193,7 +1206,6 @@ export default function Faculty() {
                         <th>Token ID</th>
                         <th>Device Type</th>
                         <th>Device ID</th>
-                        <th>Description</th>
                         <th>Bill Description</th>
                         <th>Total Bill</th>
                         <th>Action</th>
@@ -1208,7 +1220,6 @@ export default function Faculty() {
                           <td>{bill.device_type}</td>
                           <td>{bill.device_id}</td>
                           <td>{bill.description}</td>
-                          <td>{bill.bill_description}</td>
                           <td>{bill.total_bill}</td>
                           <td style={{color:'blue'}}>In progress...</td>
                          
@@ -1244,7 +1255,6 @@ export default function Faculty() {
                         <th>Token ID</th>
                         <th>Device Type</th>
                         <th>Device ID</th>
-                        <th>Description</th>
                         <th>Bill Description</th>
                         <th>Total Bill</th>
                         <th>Action</th>
@@ -1259,7 +1269,6 @@ export default function Faculty() {
                           <td>{bill.device_type}</td>
                           <td>{bill.device_id}</td>
                           <td>{bill.description}</td>
-                          <td>{bill.bill_description}</td>
                           <td>{bill.total_bill}</td>
                           <td className="text-center">
                             {/* <button onClick={() => handleApproveComplaint(complaint.token_id)} className="btn btn-success">Accept</button> */}
